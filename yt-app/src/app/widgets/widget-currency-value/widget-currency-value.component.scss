@@ -1,0 +1,47 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 150px;
+    border-radius: 30px;
+    border: 1px #f17916;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        height: 40px;
+        padding: 10px;
+
+        background-color: #f17916;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        
+        .draggable {
+            height: 24px;
+            width: 24px;
+            background-image: url("../../../assets/draggable.svg");
+            background-size: cover;
+
+            cursor: move;
+        }
+    }
+
+    .container {
+        height: 300px;
+        padding: 10px;
+
+        background-color: #e6e6e6;
+    }
+
+    .footer {
+        height: 40px;
+        padding: 10px;
+        
+        background-color: #f17916;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+}
