@@ -10,5 +10,5 @@ import { WidgetCurrencyValueComponent } from './widgets/widget-currency-value/wi
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'yt-app';
+  title = 'Тестовое задание на стажировку в YADRO';
 }

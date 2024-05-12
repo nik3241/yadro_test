@@ -1,52 +1,20 @@
-
-<header class="full-width header">
-  <div class="left-side">
-    
-    <div class="logo"></div>
+<header class="header main-bg">
+  <div class="content">
+    <span class="title">{{title}}</span>
   </div>
-  <nav class="navigation">
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-  </nav>
 </header>
 
-<main class="full-width main">
-  <div class="left-side">
-     <widget-currency-value></widget-currency-value>
+<main class="main">
+  <div class="content">
+    <widget-currency-value class="widget"></widget-currency-value>
+    <section>
+      <router-outlet />
+    </section>
   </div>
-
-    <div class="content">
-    {{title}}
-    <router-outlet />
-    
-  </div>
-  <div class="divider" role="separator" aria-label="Divider"></div>
-  
-  <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
-      
-    </div>
 </main>
 
-<footer class="full-width footer">
-  <div class="left-side">
-    
-    <div class="logo"></div>
+<footer class="footer main-bg">
+  <div class="container">
+    <span>YADRO test</span>
   </div>
-  <nav class="navigation">
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-    <a href="#">Навигация</a>
-  </nav>
-  <div class="right-side"></div>
 </footer>
-
-

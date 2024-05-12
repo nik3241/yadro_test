@@ -1,6 +1,24 @@
-<div class="header">
+<div class="top-line">
     <div class="widget-name">{{title}}</div>
-    <span class="draggable"></span>
+    <span class="icon draggable"></span>
 </div>
-<div class="container"></div>
-<div class="footer"></div>
+<div class="content">
+    <span class="currency-title">Текущая валюта: <b>{{sourse}}</b></span>
+    <span class="icon add"></span>
+    <br>
+    <span class="date-time">{{dateTime}}</span>
+    @for (currency of currencys; track currency) {
+    <div class="currency-value-line">
+        <span class="name">{{currency}}</span>
+        <span class="value">{{'0.00'}}</span>
+        <span class="icon up">^</span>
+        <span class="cost-change">({{'0.00'}})</span>
+    </div>
+    }
+</div>
+<div class="bottom-line">
+    <span class="icon resize"></span>
+</div>
+<div hidden class="pop-up add-currency">
+
+</div>
