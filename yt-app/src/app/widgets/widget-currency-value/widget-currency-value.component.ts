@@ -1,34 +1,60 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import moment from 'moment';
 
+import { WidgetCurrencyValueService } from '../services/widget-currency-value.service';
+import { HttpClientModule } from '@angular/common/http';
+import { Subscription } from 'rxjs';
+
+
 @Component({
   selector: 'widget-currency-value',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './widget-currency-value.component.html',
-  styleUrl: './widget-currency-value.component.scss'
+  styleUrl: './widget-currency-value.component.scss',
+  providers: [WidgetCurrencyValueService],
 })
 export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
-  title = "Конвертер валют"
-  sourse = "RUB";
-  moreCurrency = ["CNY", "JPY", "TRY"];
-  dateTime = "";
-  private dateTimeInterval = setInterval(() => {
-    this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss')
-    // console.log(typeof this.dateTimeInterval);
-    // console.log(this.dateTime)
-  },
-    990);
-  // defaultCurrencys = ["USD", "EUR", "GBR"];
-  currencys = ["USD", "EUR", "GBR"];
+  title: string = "Конвертер валют";
+
+  sourse: string = "RUB";
+  defaultCurrencys: string[] = ["USD", "EUR", "GBR"];
+  currencies: string[] = ["USD", "EUR", "GBR"];
+  otherCurrency: String[] = ["CNY", "JPY", "TRY"];
+  dateTime: string = "";
+
+  private dateTimeInterval!: any;
+  private subscribes$: Subscription = new Subscription();
+
+  constructor(private WCVService: WidgetCurrencyValueService) {
+
+  }
 
   ngOnInit(): void {
-    // this.currentDataTime();
+    this.dateTimeInterval = setInterval(() => {
+      this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss')
+    },
+      990);
+    this.subscribes$ = this.WCVService.getDataLive("RUB", this.defaultCurrencys)
+      .subscribe({
+        next: (value) => {
+          console.log('value', value);
+        },
+        error:(err) => {
+          console.error(err.name, err)
+        },
+        complete() {
+          console.info("подписка на данные сервиса виджета котировок валюты")
+        }
+        // () => this.subscribes$.unsubscribe()
+      });
   }
 
 
 
   ngOnDestroy(): void {
     clearInterval(this.dateTimeInterval);
+    // if this.subscribes$
+    //   this.subscribes$.unsubscribe()
   }
 }
