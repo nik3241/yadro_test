@@ -26,27 +26,26 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
   private dateTimeInterval!: any;
   private subscribes$!: Subscription;
 
-  constructor(private WCVService: WidgetCurrencyValueService) {
-
-  }
+  constructor(private WCVService: WidgetCurrencyValueService) { }
 
   ngOnInit(): void {
-    this.dateTimeInterval = setInterval(() => {
-      this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss')
-    },
-      990);
+    this.dateTimeInterval = setInterval(
+      () => this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss'),
+      990
+    );
+
     this.subscribes$ = this.WCVService.getDataLive(this.sourse, this.currencies)
       .subscribe({
         next: (value) => {
           console.log('value', value);
         },
-        error:(err) => {
+        error: (err) => {
           console.error("Моя ошибка", err.name, err)
         },
         complete() {
           console.info("подписка на данные сервиса виджета котировок валюты")
         }
-        // () => this.subscribes$.unsubscribe()
+
       });
   }
 
@@ -54,7 +53,7 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.dateTimeInterval);
-    // if this.subscribes$
-    //   this.subscribes$.unsubscribe()
+    if (this.subscribes$)
+      this.subscribes$.unsubscribe()
   }
 }

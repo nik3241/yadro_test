@@ -27,7 +27,7 @@ export class WidgetCurrencyValueService {
 
   constructor(private http: HttpClient) {
     let dataQuotes1$ = this.getDataLive("RUB", ["USD", "EUR", "GBR"]);
-    console.log(dataQuotes1$);
+    console.log("Данные из конструктор", dataQuotes1$);
 
   }
 
@@ -40,14 +40,15 @@ export class WidgetCurrencyValueService {
 
 
     let myHeaders = new HttpHeaders()
-      .set("Access-Control-Allow-Credentials", "true")
-      .set("Access-Control-Allow-Headers", "Accept, Content - Length, Content - Type, apikey, Origin")
-      .set("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS")
-      .set("Access-Control-Allow-Origin", "http://localhost:4200")
-      .set("Access-Control-Allow-Headers", "Accept,Content-Length,Content-Type,apikey,Origin")
+      // .set("Access-Control-Allow-Credentials", "true")
+      // .set("Access-Control-Allow-Methods", "GET,OPTIONS")
+      // .set("Access-Control-Allow-Origin", "*")
+      // .set("Access-Control-Allow-Headers", "Accept,Connection,Redirect,Content-Length,Content-Type,apikey,Origin")
+      // .set("Accept", "*/*")
+      // .set("Connection", "keep-alive")
       .set("apikey", this.APIkey,)
       .set("redirect", "follow",)
-      .set("responseType", "json")
+      // .set("responseType", "application/json")
 
     let requestOptions = {
       headers: myHeaders,
