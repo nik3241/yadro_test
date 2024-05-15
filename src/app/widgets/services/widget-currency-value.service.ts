@@ -46,6 +46,10 @@ export class WidgetCurrencyValueService {
       // .set("Access-Control-Allow-Headers", "Accept,Connection,Redirect,Content-Length,Content-Type,apikey,Origin")
       // .set("Accept", "*/*")
       // .set("Connection", "keep-alive")
+
+      .set("Accept", "*/*")
+      .set("Accept-Encoding", "gzip,deflate,br")
+      .set("Connection", "keep-alive")
       .set("apikey", this.APIkey,)
       .set("redirect", "follow",)
       // .set("responseType", "application/json")

@@ -18,10 +18,11 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
   title: string = "Конвертер валют";
 
   sourse: string = "RUB";
-  defaultCurrencys: string[] = ["USD", "EUR", "GBR"];
-  currencies: string[] = ["USD", "EUR", "GBR"];
+  defaultCurrencys: string[] = ["USD", "EUR", "GBP"];
+  currencies: string[] = this.defaultCurrencys;
   otherCurrency: String[] = ["CNY", "JPY", "TRY"];
   dateTime: string = "";
+  
 
   private dateTimeInterval!: any;
   private subscribes$!: Subscription;
@@ -38,6 +39,7 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (value) => {
           console.log('value', value);
+
         },
         error: (err) => {
           console.error("Моя ошибка", err.name, err)
@@ -45,7 +47,6 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
         complete() {
           console.info("подписка на данные сервиса виджета котировок валюты")
         }
-
       });
   }
 
