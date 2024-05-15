@@ -1,0 +1,8 @@
+{
+    "currency_data/*": {
+        "target": "https://api.apilayer.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": false
+    }
+}

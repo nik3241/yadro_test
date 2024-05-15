@@ -24,7 +24,7 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
   dateTime: string = "";
 
   private dateTimeInterval!: any;
-  private subscribes$: Subscription = new Subscription();
+  private subscribes$!: Subscription;
 
   constructor(private WCVService: WidgetCurrencyValueService) {
 
@@ -35,7 +35,7 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
       this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss')
     },
       990);
-    this.subscribes$ = this.WCVService.getDataLive("RUB", this.defaultCurrencys)
+    this.subscribes$ = this.WCVService.getData()
       .subscribe({
         next: (value) => {
           console.log('value', value);
