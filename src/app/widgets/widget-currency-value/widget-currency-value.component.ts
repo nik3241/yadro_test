@@ -35,13 +35,13 @@ export class WidgetCurrencyValueComponent implements OnInit, OnDestroy {
       this.dateTime = moment().format('DD.MM.YYYY HH:mm:ss')
     },
       990);
-    this.subscribes$ = this.WCVService.getData()
+    this.subscribes$ = this.WCVService.getDataLive(this.sourse, this.currencies)
       .subscribe({
         next: (value) => {
           console.log('value', value);
         },
         error:(err) => {
-          console.error(err.name, err)
+          console.error("Моя ошибка", err.name, err)
         },
         complete() {
           console.info("подписка на данные сервиса виджета котировок валюты")

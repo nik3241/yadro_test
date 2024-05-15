@@ -1,8 +1,9 @@
 $main-color: #0085FF;
 $bg-color: #fff;
-
+$color-yellowgreen: rgb(171, 230, 143);
+$color-cyan: rgb(16, 172, 190);
 $main-bg: linear-gradient(
-    60deg, rgb(171, 230, 143), rgb(16, 172, 190));
+    60deg, $color-yellowgreen, $color-cyan);
 $secondary-bg: #fff;
 
 $text-light: #fff;
@@ -16,7 +17,8 @@ $text-dark: #222;
     min-height: 150px;
 
     border-radius: 8px;
-    border: 2px solid $main-bg;
+    border-left: 2px solid $color-yellowgreen;
+    border-right: 2px solid $color-cyan;
 
     .top-line {
         display: flex;
